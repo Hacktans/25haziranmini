@@ -172,7 +172,7 @@ void ft_token(char *input, t_token **tokens)
 		}
 		
 	}
-	write_list(*tokens);
+	//write_list(*tokens);
 }
 
 void reset_tokens(t_token *tokens)

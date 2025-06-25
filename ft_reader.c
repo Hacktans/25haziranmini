@@ -41,7 +41,6 @@ void    ft_cmds(t_list *mini, t_cmd *cmd, char **env)
                 dup2(prev_pipe_in, STDIN_FILENO);
             if (cmd->next)
                 dup2(pipe_fd[1], STDOUT_FILENO);
-
             exec_command(cmd->command, mini->paths, env);
             exit(1);
         }

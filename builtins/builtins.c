@@ -58,7 +58,6 @@ int ft_exp(char **env, t_cmd *input)
 		free(env_copy);
 		return 0;
 	}
-
 	char *eq = strchr(inp[1], '=');
 	char *to_add;
 	if (eq)
@@ -133,7 +132,7 @@ void ft_builtins(t_list *mini, t_cmd *cmds, char **env)
 {
 	if (ft_strncmp(cmds->command[0], "echo", 4) == 0)
 	{
-		ft_echo(cmds->command, node_c(cmds), mini->input);
+		ft_echo(cmds->command, cmds->quote_num, mini->input);
 		return;
 	}
 	if (ft_strncmp(cmds->command[0], "pwd", 3) == 0)

@@ -32,9 +32,11 @@ typedef struct s_token
 	struct s_token *next;
 } t_token;
 
-typedef struct s_cmd {
+typedef struct s_cmd 
+{
 	char **command;
 	char **redirections;
+	int quote_num;
 	int pipe_fd[2];
 	struct s_cmd *next;
 } t_cmd;
@@ -67,5 +69,6 @@ int		spc_chk(char *str);
 void    ft_pwd();
 void	exec_command(char **args, char **paths, char **env);
 char	*get_full_path(char *cmd, char **paths);
+void    get_pid_echo();
 
 #endif

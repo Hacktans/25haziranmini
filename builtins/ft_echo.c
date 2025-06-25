@@ -74,7 +74,7 @@ void    ft_echo(char **strngs, int quote, char *input)
 			write(1, &strngs[i][j], 1);
 			j++;
 		}
-		if (strngs[i + 1] && strngs[i][0] != '\0' && spc != 0)
+		if (strngs[i + 1] && strngs[i][0] != '\0' && spc != 0) 
 			write(1, " ", 1);
 		i++;
 	}

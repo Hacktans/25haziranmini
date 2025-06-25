@@ -59,6 +59,20 @@ char	*esc_chk(char *str)
 	return(tmp);
 }
 
+int		special_dlr(char *str)
+{
+	int i = 0;
+	while(str[i])
+	{
+		if(str[i] == '$' && str[i + 1] == '$')
+			return(1);
+		else if(str[i] == '$' && str[i + 1] == '?')
+			return(1);
+		i++;
+	}
+	return(0);
+}
+
 char *exp_dollar(char *str, int quote)
 {
     int i = 0;
@@ -72,11 +86,11 @@ char *exp_dollar(char *str, int quote)
 	k = 0;
     if (!tmp)
         return NULL;
-    if (if_has_dollar(str) == 0 || quote == 1)
+    if (if_has_dollar(str) == 0 || quote == 1 || special_dlr(str))
 	{
         return (str);
 	}
-	if (ft_strncmp(str, "$$", 2) == 0 || ft_strncmp(str, "$?", 2) == 0)
+	if (ft_strncmp(str, "$$", 2) == 0 || ft_strncmp(str, "$?", 2) == 0 )
 		return(str);
 	while(str[i])
 	{
@@ -90,7 +104,7 @@ char *exp_dollar(char *str, int quote)
 	i = 0;
     while (str[i])
     {
-        if (str[i] == '$' && (str[i + 1] != '$' && str[i + 1] != '?') && str[i + 1] != '\0')
+        if (str[i] == '$' && (str[i + 1] != '$' && 	str[i + 1] != '?') && str[i + 1] != '\0')
         {
             tmp2 = take_env(str, i);
             k = 0;

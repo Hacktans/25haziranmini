@@ -2,11 +2,12 @@
 
 void apply_redirections(char **redirections)
 {
-    for (int i = 0; redirections[i]; i += 2) {
+    for (int i = 0; redirections[i]; i += 2) 
+    {
         char *type = redirections[i];
         char *file = redirections[i + 1];
 
-        int fd;
+        int fd = 0;
         if (strcmp(type, ">") == 0) {
             fd = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0644);
             dup2(fd, STDOUT_FILENO);
