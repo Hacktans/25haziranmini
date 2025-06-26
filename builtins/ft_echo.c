@@ -11,6 +11,7 @@ void	get_exit_code()
 	ft_putnbr_fd(exit_code, 0);
 }
 
+
 void    ft_echo_n(char **strngs)
 {
 	int i = 2;
@@ -19,6 +20,11 @@ void    ft_echo_n(char **strngs)
 	while(strngs[i])
 	{
 		j = 0;
+		if(ft_strncmp("-n", strngs[i], 2) == 0)
+		{
+			i++;
+			continue;
+		}
 		while(strngs[i][j])
 		{
 			if(strngs[i][j] == '$' && strngs[i][j + 1] == '$')

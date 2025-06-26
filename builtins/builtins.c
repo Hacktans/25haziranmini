@@ -130,10 +130,11 @@ int ft_unset(char **env, char *var_name)
 
 void ft_builtins(t_list *mini, t_cmd *cmds, char **env)
 {
+	if(ft_strncmp(cmds->command[0], "exit", 4) == 0)
+		return;
 	if (ft_strncmp(cmds->command[0], "echo", 4) == 0)
 	{
 		ft_echo(cmds->command, cmds->quote_num, mini->input);
-		return;
 	}
 	if (ft_strncmp(cmds->command[0], "pwd", 3) == 0)
 	{

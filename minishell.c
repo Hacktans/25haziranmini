@@ -32,7 +32,7 @@ int main(int ac, char **av, char **env)
 			printf("Syntax Error\n");
 			reset_tokens(tokens);
 			tokens = NULL;
-			continue;
+			continue; 
 		}
 		cmd = ft_parsing(tokens, mini);
 		reset_tokens(tokens);

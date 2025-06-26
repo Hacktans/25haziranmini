@@ -105,6 +105,8 @@ void ft_token(char *input, t_token **tokens)
 			{
 				if (input[i] == '\'')
 				{
+					if(input[i + 1] == '\'')
+						add_token(tokens, ft_strdup(""), "word", quote);
 					if (len > 0)
             		{
                 		word[len] = '\0';
@@ -124,6 +126,8 @@ void ft_token(char *input, t_token **tokens)
 				}
 				else if(input[i] == '"')
 				{
+					if(input[i + 1] == '"')
+						add_token(tokens, ft_strdup(""), "word", quote);
 					if (len > 0)
             		{
                 		word[len] = '\0';

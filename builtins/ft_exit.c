@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-void    exit_with_arg(char *inp)
+int    exit_with_arg(char *inp)
 {
 	char *err;
 	int len = ft_strlen(inp);
@@ -10,11 +10,10 @@ void    exit_with_arg(char *inp)
 	chk = ft_split(inp, ' ');
 	if(chk[1] && chk[2])
 	{
-	 	printf("exit\n");
 		printf("minishell: exit: too many arguments\n");	
 		exit_code = 1;
 		free(chk);
-		return;
+		return(1);
 	}
 	while(inp[i])
 	{
@@ -27,7 +26,7 @@ void    exit_with_arg(char *inp)
 			printf("minishell: exit: %s: numeric argument required\n", err);
 			exit_code = 255;
 			free(err);
-			return;
+			return(2);
 		}
 		else
 		{
@@ -39,14 +38,16 @@ void    exit_with_arg(char *inp)
 			else
 				exit_code = num;
 			free(err);
-			return;
+			return(3);
 		}
 		i++;
 	}
+	return(4);
 }
 
 void    ft_exit_chk(t_list *mini, char *input)
 {
+	int exit_res;
 	if (!input)
 	{
 		free(mini->path);
@@ -55,10 +56,13 @@ void    ft_exit_chk(t_list *mini, char *input)
 	}
 	if (!ft_strncmp(input, "exit", 4) && (input[4] == ' ' || input[4] == '\0'))
 	{
-		exit_with_arg(input);
-		free(input);
-		free(mini->path);
-		free(mini);
-		exit(0);
+		exit_res = exit_with_arg(input);
+		if(exit_res != 1)
+		{
+			free(input);
+			free(mini->path);
+			free(mini);
+			exit(0);
+		}
 	}
 }
