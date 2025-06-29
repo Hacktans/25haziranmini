@@ -59,7 +59,7 @@ int		syntax_chk(t_token *tokens, char *input);
 int		ft_quote_chk(char *inp);
 char	*esc_seq(char *inp);
 int		char_is_esc(char c) ;
-void	ft_echo(char **strngs, int quote, char *input);
+void	ft_echo(t_cmd *cmds, int quote, char *input);
 char	*exp_dollar(char *str, int quote);
 int		if_has_dollar(char *str);
 int		dollar_num(char *str);

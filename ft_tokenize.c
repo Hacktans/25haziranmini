@@ -54,8 +54,8 @@ int 	syntax_chk(t_token *tokens, char *input)
 	t_token *tmp = tokens;
 	if(ft_strncmp(tmp->type,"pipe", 4) == 0)
 		return(0);
-	if(ft_strncmp(tmp->type,"rdr", 3) == 0)
-		return(0);
+	// if(ft_strncmp(tmp->type,"rdr", 3) == 0)
+	// 	return(0);
 	if(!ft_quote_chk(input))
 		return(0);
 	return(1);

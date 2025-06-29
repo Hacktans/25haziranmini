@@ -3,7 +3,7 @@
 int    exit_with_arg(char *inp)
 {
 	char *err;
-	int len = ft_strlen(inp);
+	int len = ft_strlen(inp);  
 	int i = 5;
 	char **chk;
 	int num;

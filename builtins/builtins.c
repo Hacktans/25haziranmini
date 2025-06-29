@@ -130,31 +130,32 @@ int ft_unset(char **env, char *var_name)
 
 void ft_builtins(t_list *mini, t_cmd *cmds, char **env)
 {
-	if(ft_strncmp(cmds->command[0], "exit", 4) == 0)
-		return;
-	if (ft_strncmp(cmds->command[0], "echo", 4) == 0)
+	if(cmds->command[0] != NULL)
 	{
-		ft_echo(cmds->command, cmds->quote_num, mini->input);
-	}
-	if (ft_strncmp(cmds->command[0], "pwd", 3) == 0)
-	{
-		ft_pwd();
-		return;
-	}
-	if (ft_strncmp(cmds->command[0], "cd", 2) == 0)
-	{
-		ft_cd(cmds->command);
-		return;
-	}
-	if (ft_strncmp(cmds->command[0], "export", 6) == 0)
-	{
-		ft_exp (env, cmds);
-		return;
-	}
-	if (ft_strncmp(cmds->command[0], "unset", 5) == 0)
-	{
-		ft_unset(env, cmds->command[1]);
-		return;
+		if(ft_strncmp(cmds->command[0], "exit", 4) == 0)
+			return;
+		if (ft_strncmp(cmds->command[0], "echo", 4) == 0)
+			ft_echo(cmds, cmds->quote_num, mini->input);
+		if (ft_strncmp(cmds->command[0], "pwd", 3) == 0)
+		{
+			ft_pwd();
+			return;
+		}
+		if (ft_strncmp(cmds->command[0], "cd", 2) == 0)
+		{
+			ft_cd(cmds->command);
+			return;
+		}
+		if (ft_strncmp(cmds->command[0], "export", 6) == 0)
+		{
+			ft_exp (env, cmds);
+			return;
+		}
+		if (ft_strncmp(cmds->command[0], "unset", 5) == 0)
+		{
+			ft_unset(env, cmds->command[1]);
+			return;
+		}
 	}
 	ft_cmds(mini, cmds, env);
 }

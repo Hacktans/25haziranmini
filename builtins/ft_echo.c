@@ -49,11 +49,12 @@ void    ft_echo_n(char **strngs)
 	}
 }
 
-void    ft_echo(char **strngs, int quote, char *input)
+void    ft_echo(t_cmd *cmds, int quote, char *input)
 {
 	int i = 1;
 	int j = 0;
 	int spc = spc_chk(input);
+	char **strngs = cmds->command;
 	while(strngs[i])
 	{
 		j = 0;
@@ -77,7 +78,8 @@ void    ft_echo(char **strngs, int quote, char *input)
 				j += 2;
 				continue;
 			}
-			write(1, &strngs[i][j], 1);
+			if(!cmds->redirections)
+				write(1, &strngs[i][j], 1);
 			j++;
 		}
 		if (strngs[i + 1] && strngs[i][0] != '\0' && spc != 0) 
