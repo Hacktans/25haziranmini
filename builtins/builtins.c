@@ -135,7 +135,11 @@ void ft_builtins(t_list *mini, t_cmd *cmds, char **env)
 		if(ft_strncmp(cmds->command[0], "exit", 4) == 0)
 			return;
 		if (ft_strncmp(cmds->command[0], "echo", 4) == 0)
+		{
 			ft_echo(cmds, cmds->quote_num, mini->input);
+			if(cmds->redirections[0] == NULL)
+				return;
+		}
 		if (ft_strncmp(cmds->command[0], "pwd", 3) == 0)
 		{
 			ft_pwd();
