@@ -160,6 +160,11 @@ void ft_builtins(t_list *mini, t_cmd *cmds, char **env)
 			ft_unset(env, cmds->command[1]);
 			return;
 		}
+		if (ft_strncmp(cmds->command[0], "env", 3) == 0)
+		{
+			ft_env(env, cmds->command);
+			return;
+		}
 	}
 	ft_cmds(mini, cmds, env);
 }

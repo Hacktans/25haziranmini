@@ -70,5 +70,6 @@ void    ft_pwd();
 void	exec_command(char **args, char **paths, char **env);
 char	*get_full_path(char *cmd, char **paths);
 void    get_pid_echo();
+void    ft_env(char **env, char **cmds);
 
 #endif
